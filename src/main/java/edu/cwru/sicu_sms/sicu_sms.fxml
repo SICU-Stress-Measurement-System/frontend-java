@@ -9,15 +9,13 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -39,7 +37,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Delete" />
                </items>
             </Menu>
             <Menu fx:id="connectMenu" mnemonicParsing="false" onAction="#connect" onShowing="#onShowingConnectMenu" text="Connect">
@@ -58,129 +56,77 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TabPane layoutX="22.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="315.0" AnchorPane.topAnchor="50.0">
-        <tabs>
-          <Tab text="        EEG        ">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <BorderPane layoutX="438.0" layoutY="330.0" prefWidth="1554.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                           <left>
-                              <BorderPane prefHeight="1000.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-                                 <top>
-                                    <LineChart fx:id="leftRostralChart" cache="true" legendSide="RIGHT" title="Left Rostral" BorderPane.alignment="CENTER">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" tickLabelFill="WHITE">
-                                             <tickLabelFont>
-                                                <Font size="12.0" />
-                                             </tickLabelFont></NumberAxis>
-                                      </yAxis>
-                                       <cursor>
-                                          <Cursor fx:constant="CROSSHAIR" />
-                                       </cursor>
-                                       <effect>
-                                          <InnerShadow color="WHITE" />
-                                       </effect>
-                                    </LineChart>
-                                 </top>
-                                 <bottom>
-                                    <LineChart fx:id="leftCaudalChart" cache="true" legendSide="RIGHT" title="Left Caudal" BorderPane.alignment="CENTER">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" tickLabelFill="WHITE">
-                                             <tickLabelFont>
-                                                <Font size="12.0" />
-                                             </tickLabelFont>
-                                          </NumberAxis>
-                                       </yAxis>
-                                       <cursor>
-                                          <Cursor fx:constant="CROSSHAIR" />
-                                       </cursor>
-                                       <effect>
-                                          <InnerShadow color="WHITE" />
-                                       </effect>
-                                    </LineChart>
-                                 </bottom>
-                              </BorderPane>
-                           </left>
-                           <right>
-                              <BorderPane prefHeight="1000.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-                                 <top>
-                                    <LineChart fx:id="rightRostralChart" cache="true" legendSide="RIGHT" title="Right Rostral" BorderPane.alignment="CENTER">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" tickLabelFill="WHITE">
-                                             <tickLabelFont>
-                                                <Font size="12.0" />
-                                             </tickLabelFont>
-                                          </NumberAxis>
-                                       </yAxis>
-                                       <cursor>
-                                          <Cursor fx:constant="CROSSHAIR" />
-                                       </cursor>
-                                       <effect>
-                                          <InnerShadow color="WHITE" />
-                                       </effect>
-                                    </LineChart>
-                                 </top>
-                                 <bottom>
-                                    <LineChart fx:id="rightCaudalChart" cache="true" legendSide="RIGHT" prefHeight="400.0" prefWidth="600.0" title="Right Caudal" BorderPane.alignment="CENTER">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" tickLabelFill="WHITE">
-                                             <tickLabelFont>
-                                                <Font size="12.0" />
-                                             </tickLabelFont>
-                                          </NumberAxis>
-                                       </yAxis>
-                                       <cursor>
-                                          <Cursor fx:constant="CROSSHAIR" />
-                                       </cursor>
-                                       <effect>
-                                          <InnerShadow color="WHITE" />
-                                       </effect>
-                                    </LineChart>
-                                 </bottom>
-                              </BorderPane>
-                           </right></BorderPane>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="        EKG        ">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TabPane>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-          <ToggleButton fx:id="recordButton" mnemonicParsing="false" onAction="#record" onMouseEntered="#onMouseEnteredRecordButton" onMouseExited="#onMouseExitedRecordButton" onMousePressed="#onMousePressedRecordButton" onMouseReleased="#onMouseReleasedRecordButton" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: red;" text="Record" VBox.vgrow="SOMETIMES">
-               <VBox.margin>
-                  <Insets left="15.0" top="500.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ToggleButton>
+            <HBox alignment="CENTER" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <LineChart fx:id="leftRostralChart" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" title="EEG" HBox.hgrow="ALWAYS">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" tickLabelFill="WHITE">
+                           <tickLabelFont>
+                              <Font size="12.0" />
+                           </tickLabelFont>
+                        </NumberAxis>
+                    </yAxis>
+                     <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="WHITE" />
+                     </effect>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                  </LineChart>
+                  <LineChart fx:id="leftCaudalChart" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" title="EKG" HBox.hgrow="ALWAYS">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" tickLabelFill="WHITE">
+                           <tickLabelFont>
+                              <Font size="12.0" />
+                           </tickLabelFont>
+                        </NumberAxis>
+                     </yAxis>
+                     <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="WHITE" />
+                     </effect>
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </HBox.margin>
+                  </LineChart>
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="980.0" prefWidth="300.0">
+                     <children>
+                      <ToggleButton fx:id="recordButton" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#record" onMouseEntered="#onMouseEnteredRecordButton" onMouseExited="#onMouseExitedRecordButton" onMousePressed="#onMousePressedRecordButton" onMouseReleased="#onMouseReleasedRecordButton" style="-fx-background-color: red;" text="Record" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </ToggleButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
    <opaqueInsets>
       <Insets />
