@@ -60,9 +60,8 @@ public class Controller {
      * </ul>
      */
     public Controller() {
-        boolean portDetected = detectSerialPorts();
-        if (portDetected) {
-            // TODO: Connect to first port by default.
+        if (detectSerialPorts() && serialPortList.size() == 1) {
+            connect(serialPortList.get(0));
         }
     }
     
@@ -81,19 +80,7 @@ public class Controller {
     
     @FXML
     public void connect(ActionEvent actionEvent) {
-        try {
-            String portName = "COM5";
-            System.out.print("Connecting to serial port " + portName + "...");
-            if (serialPort != null && serialPort.isOpened()) {
-                System.out.println("\t->\tAlready connected!");
-            } else {
-                serialPort = new SerialPort(portName);
-                serialPort.openPort();
-                System.out.println("\t->\tSuccessfully connected!");
-            }
-        } catch (SerialPortException e) {
-            System.out.println("\t->\tCouldn't connect!");
-        }
+        connect("COM5");  // TODO: Figure out how to get item text from action event.
     }
     
     @FXML
@@ -140,6 +127,29 @@ public class Controller {
             //TODO: End thread for saving data to file.
         }
         onMouseEnteredRecordButton();  // indicate what next click would do
+    }
+    
+    /**
+     * Connect to the specified serial port.
+     *
+     * @param portName the name of the serial port
+     * @return <code>true</code> if the serial port was successfully connected; <code>false</code> if there is already another port currently open, or just if something went wrong connecting this one
+     */
+    private boolean connect(String portName) {
+        boolean success = false;
+        try {
+            System.out.print("Connecting to serial port " + portName + "...");
+            if (serialPort != null && serialPort.isOpened()) {
+                System.out.println("\t->\tAlready connected!");
+            } else {
+                serialPort = new SerialPort(portName);
+                success = serialPort.openPort();
+                System.out.println("\t->\tSuccessfully connected!");
+            }
+        } catch (SerialPortException e) {
+            System.out.println("\t->\tCouldn't connect!");
+        }
+        return success;
     }
     
     /**
