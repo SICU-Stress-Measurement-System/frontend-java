@@ -81,9 +81,9 @@ public class Controller {
     
     @FXML
     public void connect(ActionEvent actionEvent) {
-        String portName = "COM5";//connectGroup.getSelectedToggle().toString();  // TODO: Doesn't work.
         try {
-            System.out.println("Connecting to serial port " + portName + "...");
+            String portName = "COM5";
+            System.out.print("Connecting to serial port " + portName + "...");
             if (serialPort != null && serialPort.isOpened()) {
                 System.out.println("\t->\tAlready connected!");
             } else {
@@ -161,16 +161,11 @@ public class Controller {
     private boolean disconnect() {
         boolean success = false;
         try {
-            System.out.println("Disconnecting from serial port " + serialPort.getPortName() + "...");
+            System.out.print("Disconnecting from serial port " + serialPort.getPortName() + "...");
             success = serialPort.closePort();
-            if (success){
-                System.out.println("\t->\tSuccessfully disconnected!");
-            } else {
-                throw new SerialPortException(serialPort.getPortName(),
-                        "disconnect()", "Couldn't disconnect!");
-            }
+            if (success) System.out.println("\t->\tSuccessfully disconnected!");
         } catch (SerialPortException e) {
-            System.out.println("\t->\tAlready disconnected.");
+            System.out.println("\t->\tAlready disconnected!");
         }
         return success;
     }
