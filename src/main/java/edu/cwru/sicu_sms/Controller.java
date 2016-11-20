@@ -181,6 +181,11 @@ public class Controller {
         return success;
     }
     
+    /**
+     * Get whether data recording is currently toggled 'on' in the front-end.
+     *
+     * @return <code>true</code> if the 'record' toggle button has been pushed; <code>false</code> if no data recording is currently happening
+     */
     private boolean isRecording() {
         return recordButton.isSelected();
     }
