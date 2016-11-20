@@ -174,7 +174,7 @@ public class Controller {
             System.out.print("Disconnecting from serial port " + serialPort.getPortName() + "...");
             success = serialPort.closePort();
             if (success) System.out.println("\t->\tSuccessfully disconnected!");
-        } catch (SerialPortException e) {
+        } catch (Exception e) {
             System.out.println("\t->\tAlready disconnected!");
         }
         return success;
