@@ -166,7 +166,7 @@ public class Controller {
     /**
      * Disconnect from the serial port.
      *
-     * @return <code>true</code> if the serial port was successfully disconnected; <code>false</code> if something went wrong
+     * @return <code>true</code> if the serial port was successfully disconnected; <code>false</code> if none of the ports were connected to begin with, or just if something went wrong disconnecting this one
      */
     private boolean disconnect() {
         boolean success = false;
