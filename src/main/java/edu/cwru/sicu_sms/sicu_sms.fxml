@@ -5,10 +5,13 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -26,7 +29,7 @@
             <Image url="@background.jpg" />
          </image>
       </ImageView>
-      <MenuBar prefHeight="0.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
@@ -40,7 +43,7 @@
                   <MenuItem disable="true" mnemonicParsing="false" text="Delete" />
                </items>
             </Menu>
-            <Menu fx:id="connectMenu" mnemonicParsing="false" onAction="#connect" onShowing="#onShowingConnectMenu" text="Connect">
+            <Menu fx:id="connectMenu" mnemonicParsing="false" onAction="#connect" onMenuValidation="#onConnectMenuValidation" text="Connect">
                <items>
                   <RadioMenuItem disable="true" mnemonicParsing="false" text="&lt;no ports available&gt;">
                      <toggleGroup>
@@ -58,9 +61,9 @@
       </MenuBar>
   <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-            <HBox alignment="CENTER" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="50.0">
+            <HBox alignment="CENTER" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <LineChart fx:id="leftRostralChart" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" title="EEG" HBox.hgrow="ALWAYS">
+                  <LineChart fx:id="leftRostralChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="EEG" HBox.hgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -78,10 +81,10 @@
                         <InnerShadow color="WHITE" />
                      </effect>
                      <HBox.margin>
-                        <Insets right="25.0" />
+                        <Insets bottom="15.0" top="15.0" />
                      </HBox.margin>
                   </LineChart>
-                  <LineChart fx:id="leftCaudalChart" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" title="EKG" HBox.hgrow="ALWAYS">
+                  <LineChart fx:id="leftCaudalChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="EKG" HBox.hgrow="ALWAYS">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -99,11 +102,27 @@
                         <InnerShadow color="WHITE" />
                      </effect>
                      <HBox.margin>
-                        <Insets left="25.0" right="25.0" />
+                        <Insets bottom="15.0" top="15.0" />
                      </HBox.margin>
                   </LineChart>
-                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="980.0" prefWidth="300.0">
+                  <VBox alignment="BOTTOM_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
+                        <TitledPane alignment="TOP_RIGHT" animated="false" blendMode="EXCLUSION" collapsible="false" contentDisplay="BOTTOM" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" text="Subject Data Log" VBox.vgrow="ALWAYS">
+                           <graphic>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="972.0" prefWidth="285.0" vbarPolicy="ALWAYS">
+                                 <content>
+                                    <AnchorPane blendMode="DARKEN" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                       <children>
+                                          <ListView blendMode="EXCLUSION" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </TitledPane>
                       <ToggleButton fx:id="recordButton" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#record" onMouseEntered="#onMouseEnteredRecordButton" onMouseExited="#onMouseExitedRecordButton" onMousePressed="#onMousePressedRecordButton" onMouseReleased="#onMouseReleasedRecordButton" style="-fx-background-color: red;" text="Record" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets />
@@ -120,7 +139,7 @@
                         </ToggleButton>
                      </children>
                      <HBox.margin>
-                        <Insets left="25.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </VBox>
                </children>
