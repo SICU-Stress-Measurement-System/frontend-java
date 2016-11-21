@@ -104,7 +104,7 @@ public class Controller {
     }
     
     @FXML
-    public void onShowingConnectMenu(Event event) {
+    public void onConnectMenuValidation(Event event) {
         connectMenu.getItems().clear();
         String[] portNames = SerialPortList.getPortNames();
         if (portNames.length == 0) {
