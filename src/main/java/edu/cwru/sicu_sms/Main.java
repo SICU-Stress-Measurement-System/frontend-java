@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -28,6 +29,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(
                 getClass().getResource("sicu_sms.fxml")
         );
+        primaryStage.getIcons().add(new Image(
+                "http://s3.amazonaws.com/libapps/customers/558/images/CWRU_Logo.jpg"));
         primaryStage.setTitle("SICU Stress Measurement System");
         primaryStage.setScene(new Scene(root));
         primaryStage.setMaximized(true);
