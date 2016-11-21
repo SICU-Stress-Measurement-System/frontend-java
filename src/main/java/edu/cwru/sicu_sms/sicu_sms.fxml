@@ -63,7 +63,7 @@
          <children>
             <HBox alignment="CENTER" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <LineChart fx:id="leftRostralChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="EEG" HBox.hgrow="ALWAYS">
+                  <LineChart fx:id="eegChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="EEG" HBox.hgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -84,7 +84,7 @@
                         <Insets bottom="15.0" top="15.0" />
                      </HBox.margin>
                   </LineChart>
-                  <LineChart fx:id="leftCaudalChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="EKG" HBox.hgrow="ALWAYS">
+                  <LineChart fx:id="ekgChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="EKG" HBox.hgrow="ALWAYS">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
