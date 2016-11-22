@@ -46,11 +46,16 @@ public class Controller {
     
     @FXML private Menu connectMenu;
     @FXML public ToggleGroup connectGroup;
+    @FXML private LineChart eegChart;
+    @FXML private LineChart ekgChart;
     @FXML private ToggleButton recordButton;
     
+    private LineChart.Series eegSeries;
+    private LineChart.Series ekgSeries;
     private FileWriter fileWriter;
     private SerialPort serialPort;
     private ObservableList<String> serialPortList;
+    private LineChart.Series timeSeries;
     
     /**
      * Construct a controller for the front-end program by performing the setup routine:
