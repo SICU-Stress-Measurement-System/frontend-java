@@ -45,7 +45,7 @@ import jssc.SerialPortList;
 public class Controller {
     
     @FXML private Menu connectMenu;
-    @FXML public ToggleGroup connectGroup;
+    @FXML private ToggleGroup connectGroup;
     @FXML private LineChart eegChart;
     @FXML private LineChart ekgChart;
     @FXML private ToggleButton recordButton;
