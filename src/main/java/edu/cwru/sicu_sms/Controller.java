@@ -50,7 +50,7 @@ public class Controller {
     @FXML private LineChart ekgChart;
     @FXML private ToggleButton recordButton;
     
-    private LineChart.Series eegSeries;
+    private List<LineChart.Series> eegSeriesList;
     private LineChart.Series ekgSeries;
     private FileWriter fileWriter;
     private SerialPort serialPort;
