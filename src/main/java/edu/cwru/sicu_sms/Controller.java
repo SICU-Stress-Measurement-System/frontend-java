@@ -55,7 +55,6 @@ public class Controller {
     private FileWriter fileWriter;
     private SerialPort serialPort;
     private ObservableList<String> serialPortList;
-    private LineChart.Series timeSeries;
     
     /**
      * Construct a controller for the front-end program by performing the setup routine:
