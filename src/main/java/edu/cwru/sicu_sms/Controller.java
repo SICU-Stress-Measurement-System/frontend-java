@@ -50,11 +50,13 @@ public class Controller {
     @FXML private LineChart ekgChart;
     @FXML private ToggleButton recordButton;
     
+    private ObservableList<String> serialPortList;
+    private SerialPort serialPort;
+    
     private List<LineChart.Series> eegSeriesList;
     private LineChart.Series ekgSeries;
+    
     private FileWriter fileWriter;
-    private SerialPort serialPort;
-    private ObservableList<String> serialPortList;
     
     /**
      * Construct a controller for the front-end program by performing the setup routine:
