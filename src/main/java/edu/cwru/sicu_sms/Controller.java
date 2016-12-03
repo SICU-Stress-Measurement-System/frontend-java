@@ -51,10 +51,10 @@ public class Controller {
     @FXML private ToggleButton recordButton;
     
     private ObservableList<String> serialPortList;
-    private SerialPort serialPort;
+    private SerialPort eegPort, ekgPort;
     
-    private List<LineChart.Series> eegSeriesList;
-    private LineChart.Series ekgSeries;
+    private List<LineChart.Series> eegChannels;
+    private LineChart.Series ekgChannel;
     
     private FileWriter fileWriter;
     
