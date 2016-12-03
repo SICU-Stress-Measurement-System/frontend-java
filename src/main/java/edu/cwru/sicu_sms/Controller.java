@@ -145,11 +145,11 @@ public class Controller {
         boolean success = false;
         try {
             System.out.print("Connecting to serial port " + portName + "...");
-            if (serialPort != null && serialPort.isOpened()) {
+            if (eegPort != null && eegPort.isOpened()) {
                 System.out.println("\t->\tAlready connected!");
             } else {
-                serialPort = new SerialPort(portName);
-                success = serialPort.openPort();
+                eegPort = new SerialPort(portName);
+                success = eegPort.openPort();
                 System.out.println("\t->\tSuccessfully connected!");
             }
         } catch (SerialPortException e) {
@@ -177,9 +177,9 @@ public class Controller {
     private boolean disconnect() {
         boolean success = false;
         try {
-            System.out.print("Disconnecting from serial port " + serialPort.getPortName() + "...");
-            success = serialPort.closePort();
-            serialPort = null;
+            System.out.print("Disconnecting from serial port " + eegPort.getPortName() + "...");
+            success = eegPort.closePort();
+            eegPort = null;
             if (success) System.out.println("\t->\tSuccessfully disconnected!");
         } catch (Exception e) {
             System.out.println("\t->\tAlready disconnected!");
