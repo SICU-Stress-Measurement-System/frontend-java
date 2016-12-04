@@ -37,19 +37,21 @@ abstract class BiosigController {
      */
     boolean connect(String portName) {
         boolean success = false;
-        final SerialPort serialPort = new SerialPort(portName);
+        final SerialPort newPort = new SerialPort(portName);
         try {
-            serialPort.openPort();
-            serialPort.setParams(
+            newPort.openPort();
+            newPort.setParams(
                     SerialPort.BAUDRATE_9600,
                     SerialPort.DATABITS_8,
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
-            serialPort.setEventsMask(SerialPort.MASK_RXCHAR);
-            serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
-                if (serialPortEvent.isRXCHAR()) onSerialPortEvent();
-            });
-            this.serialPort = serialPort;
+            newPort.setEventsMask(SerialPort.MASK_RXCHAR);
+            newPort.addEventListener(
+                    (SerialPortEvent serialPortEvent) -> {
+                        if (serialPortEvent.isRXCHAR())
+                            onSerialPortEvent();
+                    });
+            this.serialPort = newPort;
             success = true;
         }
         catch (SerialPortException e) {
