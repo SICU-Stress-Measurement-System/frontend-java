@@ -8,6 +8,9 @@
 
 package edu.cwru.sicu_sms;
 
+import javafx.scene.chart.XYChart;
+import jssc.SerialPort;
+
 /**
  * This class is an abstraction for building sub-controller classes to be most likely used by the main {@link Controller} to manage serial connections and other real-time activities pertaining to biomedical signal processing.
  *
@@ -17,6 +20,15 @@ package edu.cwru.sicu_sms;
  */
 abstract class BiosigController {
     
+    SerialPort serialPort;
+    final XYChart chart;
+    final XYChart.Series series;
     
+    BiosigController(XYChart chart,
+                     XYChart.Series series)
+    {
+        this.chart = chart;
+        this.series = series;
+    }
     
 }
