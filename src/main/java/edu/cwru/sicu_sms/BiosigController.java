@@ -8,6 +8,7 @@
 
 package edu.cwru.sicu_sms;
 
+import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
@@ -57,7 +58,15 @@ abstract class BiosigController {
     }
     
     void onSerialPortEvent() {
-        // TODO: 12/4/2016
+        try {
+            int byteCount = 1;  // TODO: Customize byteCount based on needs in subclasses.
+            byte[] bytes = serialPort.readBytes(byteCount);
+            Platform.runLater(() ->
+                    updateSeriesWith(bytes[0]));
+        }
+        catch (SerialPortException e) {
+            logSerialPortException(e);
+        }
     }
     
     /**
