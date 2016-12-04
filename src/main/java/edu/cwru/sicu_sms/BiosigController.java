@@ -53,7 +53,7 @@ abstract class BiosigController {
             newPort.setEventsMask(SerialPort.MASK_RXCHAR);
             newPort.addEventListener(
                     (SerialPortEvent serialPortEvent) -> {
-                        if (serialPortEvent.isRXCHAR())
+                        if (serialPortEvent.isRXCHAR())  // this check might be unnecessary
                             onSerialPortEvent();
                     });
             this.serialPort = newPort;
@@ -90,8 +90,7 @@ abstract class BiosigController {
      */
     void onSerialPortEvent() {
         try {
-            int byteCount = 1;  // TODO: Customize byteCount based on needs in subclasses.
-            byte[] bytes = serialPort.readBytes(byteCount);
+            byte[] bytes = serialPort.readBytes(dataBytes);
             Platform.runLater(() ->
                     updateSeriesWith(bytes[0]));
         }
