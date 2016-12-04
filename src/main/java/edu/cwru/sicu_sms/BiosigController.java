@@ -9,7 +9,6 @@
 package edu.cwru.sicu_sms;
 
 import javafx.application.Platform;
-import javafx.scene.chart.XYChart;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
