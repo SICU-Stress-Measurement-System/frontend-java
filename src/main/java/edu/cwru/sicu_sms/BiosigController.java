@@ -28,6 +28,13 @@ abstract class BiosigController {
     
     private SerialPort serialPort;
     
+    /**
+     * Connect to the specified serial port to begin reading data from the biosignal stream.
+     *
+     * @param portName the name of the serial port
+     *
+     * @return <code>true</code> if the connection was successful; <code>false</code> otherwise
+     */
     boolean connect(String portName) {
         boolean success = false;
         final SerialPort serialPort = new SerialPort(portName);
