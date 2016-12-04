@@ -27,10 +27,10 @@ import jssc.SerialPortException;
 abstract class BiosigController {
     
     private SerialPort serialPort;
-    private final int dataBytes;
+    private final int byteCount;
     
-    BiosigController(int dataBytes) {
-        this.dataBytes = dataBytes;
+    BiosigController(int byteCount) {
+        this.byteCount = byteCount;
     }
     
     /**
@@ -90,7 +90,7 @@ abstract class BiosigController {
      */
     void onSerialPortEvent() {
         try {
-            byte[] bytes = serialPort.readBytes(dataBytes);
+            byte[] bytes = serialPort.readBytes(byteCount);
             Platform.runLater(() ->
                     updateSeriesWith(bytes[0]));
         }
