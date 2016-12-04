@@ -8,6 +8,9 @@
 
 package edu.cwru.sicu_sms;
 
+import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+
 /**
  * A sub-controller used by the main {@link Controller} to manage EEG biosignal processing.
  *
@@ -16,6 +19,8 @@ package edu.cwru.sicu_sms;
  * @author Abby Walker <amw138@case.edu>
  */
 class EEGController extends BiosigController {
+    
+    @FXML LineChart eegChart;
     
     EEGController() {
         super(null, null);
