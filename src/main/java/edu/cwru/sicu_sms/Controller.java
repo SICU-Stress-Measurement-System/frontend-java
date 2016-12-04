@@ -88,6 +88,20 @@ public class Controller {
     }
     
     /**
+     * Set the appropriate serial port associated with the given signal type to a new serial port with the specified port name.
+     *
+     * @param signalType the signal type associated with the serial port
+     * @param portName   the name of the serial port
+     */
+    private void setPortFor(SignalType signalType, String portName) {
+        switch (signalType) {
+            case EEG: eegPort = new SerialPort(portName); return;
+            case EKG: ekgPort = new SerialPort(portName); return;
+            default:  // do nothing
+        }
+    }
+    
+    /**
      * Initialize the list of detected ports.
      *
      * @return <code>true</code> if at least one serial port was detected; <code>false</code> otherwise
@@ -110,15 +124,21 @@ public class Controller {
         boolean success = false;
         try {
             System.out.print("Connecting to serial port " + portName + "...");
-            if (eegPort != null && eegPort.isOpened()) {
-                System.out.println("\t->\tAlready connected!");
-            } else {
-                eegPort = new SerialPort(portName);
-                success = eegPort.openPort();
-                System.out.println("\t->\tSuccessfully connected!");
-            }
-        } catch (SerialPortException e) {
-            System.out.println("\t->\tCouldn't connect!");
+            final SerialPort port = getPortFor(signalType);
+            
+            if (portName == null)
+                throw new NullPointerException("Can't connect to null port!");
+            
+            if (port != null && port.isOpened())
+                throw new InterruptedException("Already connected!");
+    
+            setPortFor(signalType, portName);
+            success = port.openPort();
+            
+            System.out.println("\t->\tSuccessfully connected!");
+        }
+        catch (Exception e) {
+            System.out.println("\t->\tCouldn't connect! " + e.getMessage());
         }
         return success;
     }
