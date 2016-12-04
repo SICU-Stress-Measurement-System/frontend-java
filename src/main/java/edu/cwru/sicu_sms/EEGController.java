@@ -9,13 +9,13 @@
 package edu.cwru.sicu_sms;
 
 /**
- * A sub-controller class used by the main {@link Controller} to manage connections and other real-time activities pertaining to the EEG portion of the front-end program.
+ * A sub-controller used by the main {@link Controller} to manage EEG biosignal processing.
  *
  * @since December 3, 2016
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class EEGController {
+public class EEGController extends BioSigController {
     
     
     

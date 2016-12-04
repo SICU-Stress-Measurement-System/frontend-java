@@ -9,13 +9,13 @@
 package edu.cwru.sicu_sms;
 
 /**
- * A sub-controller class used by the main {@link Controller} to manage connections and other real-time activities pertaining to the EKG portion of the front-end program.
+ * A sub-controller used by the main {@link Controller} to manage EKG biosignal processing.
  *
  * @since December 3, 2016
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class EKGController {
+public class EKGController extends BioSigController {
     
     
     
