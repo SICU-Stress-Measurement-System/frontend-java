@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 
 /**
@@ -24,7 +25,7 @@ import jssc.SerialPortException;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-abstract class BiosigController {
+abstract class BiosigController implements SerialPortEventListener {
     
     private SerialPort serialPort;
     private final int baudRate;
