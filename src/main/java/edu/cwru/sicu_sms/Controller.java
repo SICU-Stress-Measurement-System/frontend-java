@@ -68,7 +68,7 @@ public class Controller {
      */
     public Controller() {
         if (detectSerialPorts() && serialPortList.size() == 1) {
-            connect(serialPortList.get(0));
+            connect(serialPortList.get(0), SignalType.EEG_PORT);
         }
     }
     
@@ -84,12 +84,13 @@ public class Controller {
     }
     
     /**
-     * Connect to the specified serial port.
+     * Connect to the specified serial port, and designate it for the given signal type.
      *
-     * @param portName the name of the serial port
+     * @param portName   the name of the serial port
+     * @param signalType the signal type associated with the serial port
      * @return <code>true</code> if the serial port was successfully connected; <code>false</code> if there is already another port currently open, or just if something went wrong connecting this one
      */
-    private boolean connect(String portName) {
+    private boolean connect(String portName, SignalType signalType) {
         boolean success = false;
         try {
             System.out.print("Connecting to serial port " + portName + "...");
@@ -135,7 +136,7 @@ public class Controller {
     
     @FXML
     public void connect(ActionEvent actionEvent) {
-        connect("COM5");  // TODO: Figure out how to get item text from action event.
+        connect("COM5", SignalType.EEG_PORT);  // TODO: Figure out how to get item text from action event.
     }
     
     @FXML
