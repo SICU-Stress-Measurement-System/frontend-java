@@ -73,6 +73,21 @@ public class Controller {
     }
     
     /**
+     * Get the appropriate serial port associated with the given signal type.
+     *
+     * @param signalType the signal type associated with the serial port
+     *
+     * @return a reference to {@link #eegPort} or {@link #ekgPort} depending on the value of <code>signalType</code>; <code>null</code> is return by default if something went wrong
+     */
+    private SerialPort getPortFor(SignalType signalType) {
+        switch (signalType) {
+            case EEG: return eegPort;
+            case EKG: return ekgPort;
+            default:  return null;
+        }
+    }
+    
+    /**
      * Initialize the list of detected ports.
      *
      * @return <code>true</code> if at least one serial port was detected; <code>false</code> otherwise
