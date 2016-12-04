@@ -52,7 +52,7 @@ public class Controller {
     
     private ObservableList<String> serialPortList;
     private SerialPort eegPort, ekgPort;
-    private enum SignalType {EEG_PORT, EKGPORT}
+    private enum SignalType {EEG, EKG}
     
     private List<LineChart.Series> eegChannels;
     private LineChart.Series ekgChannel;
@@ -68,7 +68,7 @@ public class Controller {
      */
     public Controller() {
         if (detectSerialPorts() && serialPortList.size() == 1) {
-            connect(serialPortList.get(0), SignalType.EEG_PORT);
+            connect(serialPortList.get(0), SignalType.EEG);
         }
     }
     
@@ -136,7 +136,7 @@ public class Controller {
     
     @FXML
     public void connect(ActionEvent actionEvent) {
-        connect("COM5", SignalType.EEG_PORT);  // TODO: Figure out how to get item text from action event.
+        connect("COM5", SignalType.EEG);  // TODO: Figure out how to get item text from action event.
     }
     
     @FXML
