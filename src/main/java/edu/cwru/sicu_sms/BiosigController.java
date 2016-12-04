@@ -28,13 +28,6 @@ import jssc.SerialPortException;
 abstract class BiosigController {
     
     SerialPort serialPort;
-    XYChart chart;
-    XYChart.Series series;
-    
-    BiosigController(XYChart chart, XYChart.Series series) {
-        this.chart = chart;
-        this.series = series;
-    }
     
     boolean connect(String portName) {
         boolean success = false;
