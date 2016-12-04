@@ -60,6 +60,15 @@ abstract class BiosigController {
         // TODO: 12/4/2016
     }
     
+    /**
+     * Update the chart series with the given value, shifting all preceding data in the negative-time direction by one time step.
+     *
+     * @param newValue the new value to add to the chart series
+     */
+    void updateSeriesWith(float newValue) {
+        // TODO: 12/4/2016
+    }
+    
     void logSerialPortException(SerialPortException spe) {
         // TODO: 12/4/2016
     }
