@@ -15,8 +15,10 @@ package edu.cwru.sicu_sms;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class EEGController extends BiosigController {
+class EEGController extends BiosigController {
     
-    
+    EEGController() {
+        super(null, null);
+    }
     
 }

@@ -15,8 +15,10 @@ package edu.cwru.sicu_sms;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class EKGController extends BiosigController {
+class EKGController extends BiosigController {
     
-    
+    EKGController() {
+        super(null, null);
+    }
     
 }
