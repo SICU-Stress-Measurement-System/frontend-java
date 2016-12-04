@@ -48,7 +48,7 @@ abstract class BiosigController {
         try {
             newPort.openPort();
             newPort.setParams(
-                    baudRate,
+                    baudRate,  // allow subclasses to specify their own serial port baud rate
                     SerialPort.DATABITS_8,
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
