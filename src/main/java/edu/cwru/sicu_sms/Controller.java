@@ -72,17 +72,65 @@ public class Controller {
         }
     }
     
-    @FXML
-    private void confirmExit() throws Exception {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm Exit");
-        alert.setHeaderText("Are you sure you want to exit?");
-        
-        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
-        if (result == ButtonType.OK) {
-            disconnect();
-            Platform.exit();
+    /**
+     * Initialize the list of detected ports.
+     *
+     * @return <code>true</code> if at least one serial port was detected; <code>false</code> otherwise
+     */
+    private boolean detectSerialPorts() {
+        serialPortList = FXCollections.observableArrayList();
+        serialPortList.addAll(SerialPortList.getPortNames());
+        return !serialPortList.isEmpty();
+    }
+    
+    /**
+     * Connect to the specified serial port.
+     *
+     * @param portName the name of the serial port
+     * @return <code>true</code> if the serial port was successfully connected; <code>false</code> if there is already another port currently open, or just if something went wrong connecting this one
+     */
+    private boolean connect(String portName) {
+        boolean success = false;
+        try {
+            System.out.print("Connecting to serial port " + portName + "...");
+            if (eegPort != null && eegPort.isOpened()) {
+                System.out.println("\t->\tAlready connected!");
+            } else {
+                eegPort = new SerialPort(portName);
+                success = eegPort.openPort();
+                System.out.println("\t->\tSuccessfully connected!");
+            }
+        } catch (SerialPortException e) {
+            System.out.println("\t->\tCouldn't connect!");
         }
+        return success;
+    }
+    
+    /**
+     * Disconnect from the serial port.
+     *
+     * @return <code>true</code> if the serial port was successfully disconnected; <code>false</code> if none of the ports were connected to begin with, or just if something went wrong disconnecting this one
+     */
+    private boolean disconnect() {
+        boolean success = false;
+        try {
+            System.out.print("Disconnecting from serial port " + eegPort.getPortName() + "...");
+            success = eegPort.closePort();
+            eegPort = null;
+            if (success) System.out.println("\t->\tSuccessfully disconnected!");
+        } catch (Exception e) {
+            System.out.println("\t->\tAlready disconnected!");
+        }
+        return success;
+    }
+    
+    /**
+     * Get whether data recording is currently toggled 'on' in the front-end.
+     *
+     * @return <code>true</code> if the 'record' toggle button has been pushed; <code>false</code> if no data recording is currently happening
+     */
+    private boolean isRecording() {
+        return recordButton.isSelected();
     }
     
     @FXML
@@ -136,65 +184,17 @@ public class Controller {
         onMouseEnteredRecordButton();  // indicate what next click would do
     }
     
-    /**
-     * Connect to the specified serial port.
-     *
-     * @param portName the name of the serial port
-     * @return <code>true</code> if the serial port was successfully connected; <code>false</code> if there is already another port currently open, or just if something went wrong connecting this one
-     */
-    private boolean connect(String portName) {
-        boolean success = false;
-        try {
-            System.out.print("Connecting to serial port " + portName + "...");
-            if (eegPort != null && eegPort.isOpened()) {
-                System.out.println("\t->\tAlready connected!");
-            } else {
-                eegPort = new SerialPort(portName);
-                success = eegPort.openPort();
-                System.out.println("\t->\tSuccessfully connected!");
-            }
-        } catch (SerialPortException e) {
-            System.out.println("\t->\tCouldn't connect!");
+    @FXML
+    private void confirmExit() throws Exception {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Exit");
+        alert.setHeaderText("Are you sure you want to exit?");
+        
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+        if (result == ButtonType.OK) {
+            disconnect();
+            Platform.exit();
         }
-        return success;
-    }
-    
-    /**
-     * Initialize the list of detected ports.
-     *
-     * @return <code>true</code> if at least one serial port was detected; <code>false</code> otherwise
-     */
-    private boolean detectSerialPorts() {
-        serialPortList = FXCollections.observableArrayList();
-        serialPortList.addAll(SerialPortList.getPortNames());
-        return !serialPortList.isEmpty();
-    }
-    
-    /**
-     * Disconnect from the serial port.
-     *
-     * @return <code>true</code> if the serial port was successfully disconnected; <code>false</code> if none of the ports were connected to begin with, or just if something went wrong disconnecting this one
-     */
-    private boolean disconnect() {
-        boolean success = false;
-        try {
-            System.out.print("Disconnecting from serial port " + eegPort.getPortName() + "...");
-            success = eegPort.closePort();
-            eegPort = null;
-            if (success) System.out.println("\t->\tSuccessfully disconnected!");
-        } catch (Exception e) {
-            System.out.println("\t->\tAlready disconnected!");
-        }
-        return success;
-    }
-    
-    /**
-     * Get whether data recording is currently toggled 'on' in the front-end.
-     *
-     * @return <code>true</code> if the 'record' toggle button has been pushed; <code>false</code> if no data recording is currently happening
-     */
-    private boolean isRecording() {
-        return recordButton.isSelected();
     }
     
     
