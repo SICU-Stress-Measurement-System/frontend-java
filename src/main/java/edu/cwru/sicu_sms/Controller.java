@@ -88,6 +88,7 @@ public class Controller {
      *
      * @param portName   the name of the serial port
      * @param signalType the signal type associated with the serial port
+     *
      * @return <code>true</code> if the serial port was successfully connected; <code>false</code> if there is already another port currently open, or just if something went wrong connecting this one
      */
     private boolean connect(String portName, SignalType signalType) {
