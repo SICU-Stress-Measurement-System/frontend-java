@@ -27,9 +27,11 @@ import jssc.SerialPortException;
 abstract class BiosigController {
     
     private SerialPort serialPort;
+    private final int baudRate;
     private final int byteCount;
     
-    BiosigController(int byteCount) {
+    BiosigController(int baudRate, int byteCount) {
+        this.baudRate = baudRate;
         this.byteCount = byteCount;
     }
     
@@ -46,7 +48,7 @@ abstract class BiosigController {
         try {
             newPort.openPort();
             newPort.setParams(
-                    SerialPort.BAUDRATE_9600,
+                    baudRate,
                     SerialPort.DATABITS_8,
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
