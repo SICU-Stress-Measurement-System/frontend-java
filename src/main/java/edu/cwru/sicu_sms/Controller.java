@@ -133,6 +133,7 @@ public class Controller {
                 throw new InterruptedException("Already connected!");
     
             setPortFor(signalType, portName);
+            assert port != null;
             success = port.openPort();
             
             System.out.println("\t->\tSuccessfully connected!");
