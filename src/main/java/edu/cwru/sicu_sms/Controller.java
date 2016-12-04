@@ -140,22 +140,22 @@ public class Controller {
     }
     
     @FXML
-    private void onMouseEnteredRecordButton() {
+    public void onMouseEnteredRecordButton() {
         recordButton.setText((isRecording() ? "Stop" : "Start") + " Recording");
     }
     
     @FXML
-    private void onMouseExitedRecordButton() {
+    public void onMouseExitedRecordButton() {
         recordButton.setText("Record" + (isRecording() ? "ing..." : ""));
     }
     
     @FXML
-    private void onMousePressedRecordButton() {
+    public void onMousePressedRecordButton() {
         recordButton.setStyle("-fx-background-color: darkred");
     }
     
     @FXML
-    private void onMouseReleasedRecordButton() {
+    public void onMouseReleasedRecordButton() {
         recordButton.setStyle("-fx-background-color: red");
     }
     
@@ -175,7 +175,7 @@ public class Controller {
     }
     
     @FXML
-    private void record() {
+    public void record() {
         if (isRecording()) {  // start recording...
             //TODO: Run thread for saving data to file.
         }
@@ -186,7 +186,7 @@ public class Controller {
     }
     
     @FXML
-    private void confirmExit() throws Exception {
+    public void confirmExit() throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm Exit");
         alert.setHeaderText("Are you sure you want to exit?");
