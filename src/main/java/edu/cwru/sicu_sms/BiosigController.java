@@ -51,6 +51,9 @@ abstract class BiosigController {
         return success;
     }
     
+    /**
+     * Task to be performed when the serial port detects data bytes in the input buffer.
+     */
     void onSerialPortEvent() {
         try {
             int byteCount = 1;  // TODO: Customize byteCount based on needs in subclasses.
