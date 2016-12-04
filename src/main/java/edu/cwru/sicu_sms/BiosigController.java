@@ -27,6 +27,11 @@ import jssc.SerialPortException;
 abstract class BiosigController {
     
     private SerialPort serialPort;
+    private final int dataBytes;
+    
+    BiosigController(int dataBytes) {
+        this.dataBytes = dataBytes;
+    }
     
     /**
      * Connect to the specified serial port to begin reading data from the biosignal stream.
