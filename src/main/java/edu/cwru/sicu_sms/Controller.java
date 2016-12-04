@@ -52,7 +52,7 @@ public class Controller {
     
     private ObservableList<String> serialPortList;
     private SerialPort eegPort, ekgPort;
-    private enum PortType {EEG_PORT, EKGPORT}
+    private enum SignalType {EEG_PORT, EKGPORT}
     
     private List<LineChart.Series> eegChannels;
     private LineChart.Series ekgChannel;
