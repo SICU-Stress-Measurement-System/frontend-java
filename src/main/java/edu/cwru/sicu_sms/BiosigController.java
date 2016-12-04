@@ -63,19 +63,18 @@ abstract class BiosigController {
     /**
      * Disconnect from the current serial port.
      *
-     * @return <code>true</code> if this operation was successful; <code>false</code> if something went wrong
+     * @return <code>true</code> if this operation was successful; <code>false</code> if there was no serial port to disconnect, or if something went wrong
      */
     boolean disconnect() {
         boolean success = false;
-        if (serialPort == null)
-            return success;
         try {
             serialPort.removeEventListener();
             if (serialPort.isOpened()) serialPort.closePort();
             serialPort = null;
             success = true;
-        }
-        catch (SerialPortException e) {
+        } catch (NullPointerException e) {
+            // serial port was null to begin with
+        } catch (SerialPortException e) {
             logSerialPortException(e);
         }
         return success;
