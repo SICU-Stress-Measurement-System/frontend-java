@@ -14,6 +14,9 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * This class is an abstraction for building sub-controller classes to be most likely used by the main {@link Controller} to manage serial connections and other real-time activities pertaining to biomedical signal processing.
  *
@@ -78,8 +81,18 @@ abstract class BiosigController {
         // TODO: 12/4/2016
     }
     
-    void logSerialPortException(SerialPortException spe) {
-        // TODO: 12/4/2016
+    /**
+     * Log the serial port exception thrown (and caught) in a quick, proper, and reusable way.
+     *
+     * @param thrown the serial port exception to be logged
+     */
+    void logSerialPortException(SerialPortException thrown) {
+        Logger.getLogger(getClass().getName())
+                .log(
+                        Level.SEVERE,
+                        thrown.getMessage(),
+                        thrown
+                );
     }
     
 }
