@@ -26,7 +26,7 @@ import jssc.SerialPortException;
  */
 abstract class BiosigController {
     
-    SerialPort serialPort;
+    private SerialPort serialPort;
     
     boolean connect(String portName) {
         boolean success = false;
