@@ -59,6 +59,27 @@ abstract class BiosigController {
     }
     
     /**
+     * Disconnect from the current serial port.
+     *
+     * @return <code>true</code> if this operation was successful; <code>false</code> if something went wrong
+     */
+    boolean disconnect() {
+        boolean success = false;
+        if (serialPort == null)
+            return success;
+        try {
+            serialPort.removeEventListener();
+            if (serialPort.isOpened()) serialPort.closePort();
+            serialPort = null;
+            success = true;
+        }
+        catch (SerialPortException e) {
+            logSerialPortException(e);
+        }
+        return success;
+    }
+    
+    /**
      * Task to be performed when the serial port detects data bytes in the input buffer.
      */
     void onSerialPortEvent() {
