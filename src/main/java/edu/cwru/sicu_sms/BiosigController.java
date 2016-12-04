@@ -10,6 +10,8 @@ package edu.cwru.sicu_sms;
 
 import javafx.scene.chart.XYChart;
 import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortException;
 
 /**
  * This class is an abstraction for building sub-controller classes to be most likely used by the main {@link Controller} to manage serial connections and other real-time activities pertaining to biomedical signal processing.
@@ -29,6 +31,37 @@ abstract class BiosigController {
     {
         this.chart = chart;
         this.series = series;
+    }
+    
+    boolean connect(String portName) {
+        boolean success = false;
+        final SerialPort serialPort = new SerialPort(portName);
+        try {
+            serialPort.openPort();
+            serialPort.setParams(
+                    SerialPort.BAUDRATE_9600,
+                    SerialPort.DATABITS_8,
+                    SerialPort.STOPBITS_1,
+                    SerialPort.PARITY_NONE);
+            serialPort.setEventsMask(SerialPort.MASK_RXCHAR);
+            serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
+                if (serialPortEvent.isRXCHAR()) onSerialPortEvent();
+            });
+            this.serialPort = serialPort;
+            success = true;
+        }
+        catch (SerialPortException e) {
+            logSerialPortException(e);
+        }
+        return success;
+    }
+    
+    void onSerialPortEvent() {
+        // TODO: 12/4/2016
+    }
+    
+    void logSerialPortException(SerialPortException spe) {
+        // TODO: 12/4/2016
     }
     
 }
