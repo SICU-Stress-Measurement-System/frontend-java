@@ -239,6 +239,7 @@ public class Controller {
     /**
      * A controller for the EEG tab.
      */
+    @Deprecated
     private class EEGController {
     
         @FXML private LineChart<String, Number>
@@ -343,6 +344,7 @@ public class Controller {
     /**
      * A controller for the EKG tab.
      */
+    @Deprecated
     private class EKGController {
         
         //TODO:
