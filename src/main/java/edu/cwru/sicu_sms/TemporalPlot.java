@@ -8,6 +8,9 @@
 
 package edu.cwru.sicu_sms;
 
+import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+
 /**
  * This class is delegated to managing the "Channel Data" plot in the front-end program.
  *
@@ -17,6 +20,6 @@ package edu.cwru.sicu_sms;
  */
 class TemporalPlot {
     
-    
+    @FXML LineChart temporalChart;
     
 }
