@@ -54,11 +54,7 @@ abstract class BiosigController implements SerialPortEventListener {
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
             newPort.setEventsMask(SerialPort.MASK_RXCHAR);
-            newPort.addEventListener(
-                    (SerialPortEvent serialPortEvent) -> {
-                        if (serialPortEvent.isRXCHAR())  // this check might be unnecessary
-                            onSerialPortEvent();
-                    });
+            newPort.addEventListener(this);
             this.serialPort = newPort;
             success = true;
         }
