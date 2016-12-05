@@ -9,11 +9,9 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -40,21 +38,31 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem disable="true" mnemonicParsing="false" text="Delete" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="&lt;nothing to edit&gt;" />
                </items>
             </Menu>
-            <Menu fx:id="connectMenu" mnemonicParsing="false" onAction="#connect" onMenuValidation="#onConnectMenuValidation" text="Connect">
+            <Menu mnemonicParsing="false" text="View">
                <items>
-                  <RadioMenuItem disable="true" mnemonicParsing="false" text="&lt;no ports available&gt;">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="connectGroup" />
-                     </toggleGroup>
-                  </RadioMenuItem>
+                  <MenuItem disable="true" mnemonicParsing="false" text="&lt;nothing to view&gt;" />
+               </items>
+            </Menu>
+            <Menu fx:id="connectMenu" mnemonicParsing="false" onAction="#connect" onMenuValidation="#onConnectMenuValidation" text="Tools">
+               <items>
+                  <Menu disable="true" mnemonicParsing="false" text="OpenBCI">
+                    <items>
+                      <MenuItem disable="true" mnemonicParsing="false" text="Dummy" />
+                    </items>
+                  </Menu>
+                  <Menu disable="true" mnemonicParsing="false" text="Shield-EKG/EMG">
+                     <items>
+                        <MenuItem disable="true" mnemonicParsing="false" text="Dummy" />
+                     </items>
+                  </Menu>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="About" />
                </items>
             </Menu>
          </menus>
