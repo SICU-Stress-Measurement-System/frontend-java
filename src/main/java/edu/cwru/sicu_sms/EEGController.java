@@ -8,6 +8,8 @@
 
 package edu.cwru.sicu_sms;
 
+import jssc.SerialPortEvent;
+
 /**
  * A sub-controller used by the main {@link Controller} to manage EEG biosignal processing.
  *
@@ -21,4 +23,8 @@ class EEGController extends BiosigController {
         super(115200, 9);
     }
     
+    @Override
+    public void serialEvent(SerialPortEvent serialPortEvent) {
+        
+    }
 }

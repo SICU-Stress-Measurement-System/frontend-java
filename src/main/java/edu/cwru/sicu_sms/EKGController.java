@@ -8,6 +8,8 @@
 
 package edu.cwru.sicu_sms;
 
+import jssc.SerialPortEvent;
+
 /**
  * A sub-controller used by the main {@link Controller} to manage EKG biosignal processing.
  *
@@ -21,4 +23,8 @@ class EKGController extends BiosigController {
         super(9600, 1);
     }
     
+    @Override
+    public void serialEvent(SerialPortEvent serialPortEvent) {
+        
+    }
 }
