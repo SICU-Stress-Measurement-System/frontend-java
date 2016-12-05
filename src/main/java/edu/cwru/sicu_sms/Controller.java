@@ -54,6 +54,7 @@ public class Controller {
      */
     private boolean disconnect() {
         boolean success = false;
+        /*
         try {
             System.out.print("Disconnecting from serial port " + eegPort.getPortName() + "...");
             success = eegPort.closePort();
@@ -62,6 +63,7 @@ public class Controller {
         } catch (Exception e) {
             System.out.println("\t->\tAlready disconnected!");
         }
+        */
         return success;
     }  // TODO: reimplement for all serial ports
     
