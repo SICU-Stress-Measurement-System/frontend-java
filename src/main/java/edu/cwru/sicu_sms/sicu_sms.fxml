@@ -72,7 +72,7 @@
          <children>
             <HBox alignment="CENTER" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <LineChart fx:id="dataChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="Channel Data" HBox.hgrow="ALWAYS">
+                  <LineChart fx:id="temporalChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="Channel Data" HBox.hgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -109,7 +109,7 @@
                               <Insets bottom="25.0" top="25.0" />
                            </padding>
                         </ProgressIndicator>
-                        <LineChart fx:id="eegSpectraChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="325.0" title="Channel Spectra (EEG)">
+                        <LineChart fx:id="eegSpectralChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="325.0" title="Channel Spectra (EEG)">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -127,7 +127,7 @@
                               <InnerShadow color="WHITE" />
                            </effect>
                         </LineChart>
-                        <LineChart fx:id="ekgSpectraChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="325.0" title="Channel Spectra (EKG)">
+                        <LineChart fx:id="ekgSpectralChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="325.0" title="Channel Spectra (EKG)">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
