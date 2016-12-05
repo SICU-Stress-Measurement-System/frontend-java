@@ -17,6 +17,8 @@ package edu.cwru.sicu_sms;
  */
 class EEGController extends BiosigController {
     
-    
+    EEGController() {
+        super(115200, 9);
+    }
     
 }

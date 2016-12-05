@@ -17,6 +17,8 @@ package edu.cwru.sicu_sms;
  */
 class EKGController extends BiosigController {
     
-    
+    EKGController() {
+        super(9600, 1);
+    }
     
 }
