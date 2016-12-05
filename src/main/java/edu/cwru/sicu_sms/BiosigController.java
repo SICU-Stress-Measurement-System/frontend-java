@@ -85,29 +85,6 @@ abstract class BiosigController implements SerialPortEventListener {
     }
     
     /**
-     * Task to be performed when the serial port detects data bytes in the input buffer.
-     */
-    void onSerialPortEvent() {
-        try {
-            byte[] bytes = serialPort.readBytes(byteCount);
-            Platform.runLater(() ->
-                    updateSeriesWith(bytes[0]));
-        }
-        catch (SerialPortException e) {
-            logSerialPortException(e);
-        }
-    }
-    
-    /**
-     * Update the chart series with the given value, shifting all preceding data in the negative-time direction by one time step.
-     *
-     * @param newValue the new value to add to the chart series
-     */
-    void updateSeriesWith(float newValue) {
-        // TODO: 12/4/2016
-    }
-    
-    /**
      * Log the serial port exception thrown (and caught) in a quick, proper, and reusable way.
      *
      * @param thrown the serial port exception to be logged
