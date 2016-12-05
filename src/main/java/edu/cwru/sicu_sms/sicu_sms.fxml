@@ -89,12 +89,33 @@
                         <InnerShadow color="WHITE" />
                      </effect>
                      <HBox.margin>
-                        <Insets bottom="25.0" top="25.0" />
+                        <Insets />
                      </HBox.margin>
+                     <padding>
+                        <Insets bottom="25.0" top="25.0" />
+                     </padding>
                   </LineChart>
                   <VBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
                      <children>
-                        <LineChart fx:id="spectraChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="Channel Spectra">
+                        <LineChart fx:id="eegSpectraChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="Channel Spectra (EEG)">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" tickLabelFill="WHITE">
+                                 <tickLabelFont>
+                                    <Font size="12.0" />
+                                 </tickLabelFont>
+                              </NumberAxis>
+                           </yAxis>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="WHITE" />
+                           </effect>
+                        </LineChart>
+                        <LineChart fx:id="ekgSpectraChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="Channel Spectra (EKG)">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -112,13 +133,16 @@
                               <InnerShadow color="WHITE" />
                            </effect>
                            <VBox.margin>
-                              <Insets bottom="25.0" />
+                              <Insets />
                            </VBox.margin>
                         </LineChart>
                      </children>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <padding>
+                        <Insets bottom="25.0" top="25.0" />
+                     </padding>
                   </VBox>
                   <VBox alignment="BOTTOM_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
