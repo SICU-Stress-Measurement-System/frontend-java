@@ -26,7 +26,7 @@ abstract class BiosigController implements SerialPortEventListener {
     
     private SerialPort serialPort;
     private final int baudRate;
-    private final int byteCount;
+    final int byteCount;
     
     BiosigController(int baudRate, int byteCount) {
         this.baudRate = baudRate;
