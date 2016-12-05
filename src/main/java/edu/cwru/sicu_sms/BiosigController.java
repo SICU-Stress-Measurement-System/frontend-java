@@ -8,15 +8,12 @@
 
 package edu.cwru.sicu_sms;
 
-import javafx.application.Platform;
+import jssc.SerialPort;
+import jssc.SerialPortEventListener;
+import jssc.SerialPortException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import jssc.SerialPort;
-import jssc.SerialPortEvent;
-import jssc.SerialPortEventListener;
-import jssc.SerialPortException;
 
 /**
  * This class is an abstraction for building sub-controller classes to be most likely used by the main {@link Controller} to manage serial connections and other real-time activities pertaining to biomedical signal processing.
