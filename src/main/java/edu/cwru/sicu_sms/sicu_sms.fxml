@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
@@ -97,6 +98,14 @@
                   </LineChart>
                   <VBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
                      <children>
+                        <ProgressIndicator focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" VBox.vgrow="SOMETIMES">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="50.0" top="50.0" />
+                           </VBox.margin>
+                        </ProgressIndicator>
                         <LineChart fx:id="eegSpectraChart" blendMode="EXCLUSION" cache="true" legendSide="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" title="Channel Spectra (EEG)">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
