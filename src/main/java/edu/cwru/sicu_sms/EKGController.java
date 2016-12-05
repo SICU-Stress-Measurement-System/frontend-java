@@ -8,9 +8,6 @@
 
 package edu.cwru.sicu_sms;
 
-import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
-
 /**
  * A sub-controller used by the main {@link Controller} to manage EKG biosignal processing.
  *
@@ -20,10 +17,6 @@ import javafx.scene.chart.LineChart;
  */
 class EKGController extends BiosigController {
     
-    @FXML LineChart ekgChart;
     
-    EKGController() {
-        super(null, null);
-    }
     
 }
