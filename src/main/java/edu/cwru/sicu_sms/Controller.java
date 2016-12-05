@@ -22,6 +22,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
+import jssc.SerialPortList;
 
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
@@ -30,10 +31,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Executors;
-
-import jssc.SerialPort;
-import jssc.SerialPortException;
-import jssc.SerialPortList;
 
 /**
  * The controller for the front-end program.
@@ -46,60 +43,11 @@ public class Controller {
     
     @FXML private Menu connectMenu;
     @FXML private ToggleGroup connectGroup;
-    @FXML private LineChart eegChart;
-    @FXML private LineChart ekgChart;
     @FXML private ToggleButton recordButton;
     
     private ObservableList<String> serialPortList;
-    private SerialPort eegPort, ekgPort;
-    private enum SignalType {EEG, EKG}
-    
-    private List<LineChart.Series> eegChannels;
-    private LineChart.Series ekgChannel;
     
     private FileWriter fileWriter;
-    
-    /**
-     * Construct a controller for the front-end program by performing the setup routine:
-     * <ul>
-     *     1. Detect serial ports. <br>
-     *     2. Connect to the first port by default, if it exists. <br>
-     * </ul>
-     */
-    public Controller() {
-        if (detectSerialPorts() && serialPortList.size() == 1) {
-            connect(serialPortList.get(0), SignalType.EEG);
-        }
-    }
-    
-    /**
-     * Get the appropriate serial port associated with the given signal type.
-     *
-     * @param signalType the signal type associated with the serial port
-     *
-     * @return a reference to {@link #eegPort} or {@link #ekgPort} depending on the value of <code>signalType</code>; <code>null</code> is return by default if something went wrong
-     */
-    private SerialPort getPortFor(SignalType signalType) {
-        switch (signalType) {
-            case EEG: return eegPort;
-            case EKG: return ekgPort;
-            default:  return null;
-        }
-    }
-    
-    /**
-     * Set the appropriate serial port associated with the given signal type to a new serial port with the specified port name.
-     *
-     * @param signalType the signal type associated with the serial port
-     * @param portName   the name of the serial port
-     */
-    private void setPortFor(SignalType signalType, String portName) {
-        switch (signalType) {
-            case EEG: eegPort = new SerialPort(portName); return;
-            case EKG: ekgPort = new SerialPort(portName); return;
-            default:  // do nothing
-        }
-    }
     
     /**
      * Initialize the list of detected ports.
@@ -113,41 +61,9 @@ public class Controller {
     }
     
     /**
-     * Connect to the specified serial port, and designate it for the given signal type.
+     * Disconnect from all serial ports.
      *
-     * @param portName   the name of the serial port
-     * @param signalType the signal type associated with the serial port
-     *
-     * @return <code>true</code> if the serial port was successfully connected; <code>false</code> if there is already another port currently open, or just if something went wrong connecting this one
-     */
-    private boolean connect(String portName, SignalType signalType) {
-        boolean success = false;
-        try {
-            System.out.print("Connecting to serial port " + portName + "...");
-            final SerialPort port = getPortFor(signalType);
-            
-            if (portName == null)
-                throw new NullPointerException("Can't connect to null port!");
-            
-            if (port != null && port.isOpened())
-                throw new InterruptedException("Already connected!");
-    
-            setPortFor(signalType, portName);
-            assert port != null;
-            success = port.openPort();
-            
-            System.out.println("\t->\tSuccessfully connected!");
-        }
-        catch (Exception e) {
-            System.out.println("\t->\tCouldn't connect! " + e.getMessage());
-        }
-        return success;
-    }
-    
-    /**
-     * Disconnect from the serial port.
-     *
-     * @return <code>true</code> if the serial port was successfully disconnected; <code>false</code> if none of the ports were connected to begin with, or just if something went wrong disconnecting this one
+     * @return <code>true</code> if the serial ports were successfully disconnected; <code>false</code> if there were no ports connected to begin with, or if something went wrong
      */
     private boolean disconnect() {
         boolean success = false;
@@ -160,7 +76,7 @@ public class Controller {
             System.out.println("\t->\tAlready disconnected!");
         }
         return success;
-    }
+    }  // TODO: reimplement for all serial ports
     
     /**
      * Get whether data recording is currently toggled 'on' in the front-end.
@@ -173,7 +89,7 @@ public class Controller {
     
     @FXML
     public void connect(ActionEvent actionEvent) {
-        connect("COM5", SignalType.EEG);  // TODO: Figure out how to get item text from action event.
+        // TODO: figure out how to get item text from action event
     }
     
     @FXML
@@ -214,10 +130,10 @@ public class Controller {
     @FXML
     public void record() {
         if (isRecording()) {  // start recording...
-            //TODO: Run thread for saving data to file.
+            // TODO: Run thread for saving data to file.
         }
         else {  // stop recording...
-            //TODO: End thread for saving data to file.
+            // TODO: End thread for saving data to file.
         }
         onMouseEnteredRecordButton();  // indicate what next click would do
     }
