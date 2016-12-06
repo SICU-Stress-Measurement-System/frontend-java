@@ -26,7 +26,7 @@ import java.io.FileWriter;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class Controller {
+public class MainController {
     
     @FXML private Menu connectMenu;
     @FXML private ToggleGroup connectGroup;
