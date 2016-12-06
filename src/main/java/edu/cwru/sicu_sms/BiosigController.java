@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * This class is an abstraction for building sub-controller classes to be most likely used by the main {@link Controller} to manage serial connections and other real-time activities pertaining to biomedical signal processing.
+ * This class is an abstraction for building sub-controller classes to be most likely used by {@link MainController} to manage serial connections and other real-time activities pertaining to biomedical signal processing.
  *
  * @since December 3, 2016
  * @author Ted Frohlich <ttf10@case.edu>
