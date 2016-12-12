@@ -44,40 +44,40 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
         serialPort = new SerialPort(getPortName());
     }
     
-    private String propertyValue(String key) {
+    private String getProperty(String key) {
         return properties.getProperty(key);
     }
     
-    private int propertyValueAsInt(String key) {
-        return Integer.parseInt(propertyValue(key));
+    private int getPropertyAsInt(String key) {
+        return Integer.parseInt(getProperty(key));
     }
     
     public String getPortName() {
-        return propertyValue("portName");
+        return getProperty("portName");
     }
     
     public String getNickname() {
-        return propertyValue("nickname");
+        return getProperty("nickname");
     }
     
     public int getBaudRate() {
-        return propertyValueAsInt("baudRate");
+        return getPropertyAsInt("baudRate");
     }
     
     public int getDataBits() {
-        return propertyValueAsInt("dataBits");
+        return getPropertyAsInt("dataBits");
     }
     
     public int getStopBits() {
-        return propertyValueAsInt("stopBits");
+        return getPropertyAsInt("stopBits");
     }
     
     public int getParity() {
-        return propertyValueAsInt("parity");
+        return getPropertyAsInt("parity");
     }
     
     public int getMask() {
-        return propertyValueAsInt("mask");
+        return getPropertyAsInt("mask");
     }
     
 }
