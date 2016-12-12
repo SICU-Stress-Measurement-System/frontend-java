@@ -24,7 +24,8 @@ import java.util.Properties;
  */
 abstract class AbstractSerialPort implements SerialPortEventListener {
     
-    SerialPort serialPort;
+    final SerialPort serialPort;
+    final Properties properties;
     
     /**
      * Instantiates the underlying serial port with the port name associated with the given property key.
@@ -32,10 +33,9 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
      * @param key the string key used to load the port name from the 'port' properties file
      */
     AbstractSerialPort(String key) {
-        Properties properties = new Properties();
-        FileInputStream inStream = null;
+        properties = new Properties();
         try {
-            inStream = new FileInputStream("port.properties");
+            FileInputStream inStream = new FileInputStream("port.properties");
             properties.load(inStream);
             inStream.close();
         } catch (IOException e) {
