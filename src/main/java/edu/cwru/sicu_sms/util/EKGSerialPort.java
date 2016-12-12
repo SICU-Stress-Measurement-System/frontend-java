@@ -20,7 +20,7 @@ import jssc.SerialPortEvent;
 public final class EKGSerialPort extends AbstractSerialPort {
     
     public EKGSerialPort() {
-        super("port.usb.ekg.portname");
+        super("util/EKGSerialPort.properties");
     }
     
     @Override
