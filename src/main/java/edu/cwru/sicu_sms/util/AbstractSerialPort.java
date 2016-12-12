@@ -28,20 +28,56 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     final Properties properties;
     
     /**
-     * Instantiates the underlying serial port with the port name associated with the given property key.
+     * Constructs the underlying serial port with properties from the specified file.
      *
-     * @param key the string key used to load the port name from the 'port' properties file
+     * @param filename the relative path to the <code>.properties</code> file
      */
-    AbstractSerialPort(String key) {
+    AbstractSerialPort(String filename) {
         properties = new Properties();
         try {
-            FileInputStream inStream = new FileInputStream("port.properties");
+            FileInputStream inStream = new FileInputStream(filename);
             properties.load(inStream);
             inStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        serialPort = new SerialPort(properties.getProperty(key));
+        serialPort = new SerialPort(getPortName());
+    }
+    
+    private String propertyValue(String key) {
+        return properties.getProperty(key);
+    }
+    
+    private int propertyValueAsInt(String key) {
+        return Integer.parseInt(propertyValue(key));
+    }
+    
+    public String getPortName() {
+        return propertyValue("portName");
+    }
+    
+    public String getNickname() {
+        return propertyValue("nickname");
+    }
+    
+    public int getBaudRate() {
+        return propertyValueAsInt("baudRate");
+    }
+    
+    public int getDataBits() {
+        return propertyValueAsInt("dataBits");
+    }
+    
+    public int getStopBits() {
+        return propertyValueAsInt("stopBits");
+    }
+    
+    public int getParity() {
+        return propertyValueAsInt("parity");
+    }
+    
+    public int getMask() {
+        return propertyValueAsInt("mask");
     }
     
 }
