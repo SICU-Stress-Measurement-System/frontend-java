@@ -44,6 +44,8 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
         serialPort = new SerialPort(getPortName());
     }
     
+    ///////////////////////////  GETTERS  ///////////////////////////////
+    
     private String getProperty(String key) {
         return properties.getProperty(key);
     }
@@ -79,5 +81,47 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     public int getMask() {
         return getPropertyAsInt("mask");
     }
+    
+    ///////////////////////////  SETTERS  ///////////////////////////////
+    
+    private void setProperty(String key, String value) {
+        properties.setProperty(key, value);
+    }
+    
+    private void setPropertyAsInt(String key, int value) {
+        setProperty(key, String.valueOf(value));
+    }
+    
+    public void setPortName(String value) {
+        setProperty("portName", value);
+    }
+    
+    public void setNickname(String value) {
+        setProperty("nickname", value);
+    }
+    
+    public void setBaudRate(int value) {
+        setPropertyAsInt("baudRate", value);
+    }
+    
+    public void setDataBits(int value) {
+        setPropertyAsInt("dataBits", value);
+    }
+    
+    public void setStopBits(int value) {
+        setPropertyAsInt("stopBits", value);
+    }
+    
+    public void setParity(int value) {
+        setPropertyAsInt("parity", value);
+    }
+    
+    public void setMask(int value) {
+        setPropertyAsInt("mask", value);
+    }
+    
+    ////////////////////////  OTHER METHODS  ////////////////////////////
+    
+    // TODO: Start other methods here.
     
 }
