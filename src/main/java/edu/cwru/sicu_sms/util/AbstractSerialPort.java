@@ -10,6 +10,7 @@ package edu.cwru.sicu_sms.util;
 
 import jssc.SerialPort;
 import jssc.SerialPortEventListener;
+import jssc.SerialPortException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -120,8 +121,27 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
         setPropertyAsInt("mask", value);
     }
     
+    // TODO: Setters should write updated properties back to .properties file!
+    
     ////////////////////////  OTHER METHODS  ////////////////////////////
     
-    // TODO: Start other methods here.
+    public boolean openPort() {
+        boolean success = false;
+        try {
+            serialPort.openPort();
+            serialPort.setParams(
+                    getBaudRate(),
+                    getDataBits(),
+                    getStopBits(),
+                    getParity());
+            serialPort.setEventsMask(
+                    getMask());
+            serialPort.addEventListener(this);
+            success = true;
+        } catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
     
 }
