@@ -11,6 +11,10 @@ package edu.cwru.sicu_sms.util;
 import jssc.SerialPort;
 import jssc.SerialPortEventListener;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 /**
  * This class is an abstraction of a serial port comprising all the necessary parameters and core functionality needed for the client application.
  *
@@ -20,6 +24,19 @@ import jssc.SerialPortEventListener;
  */
 abstract class AbstractSerialPort implements SerialPortEventListener {
     
-    private SerialPort serialPort;
+    SerialPort serialPort;
+    
+    AbstractSerialPort(String key) {
+        Properties properties = new Properties();
+        FileInputStream inStream = null;
+        try {
+            inStream = new FileInputStream("port.properties");
+            properties.load(inStream);
+            inStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        serialPort = new SerialPort(properties.getProperty(key));
+    }
     
 }
