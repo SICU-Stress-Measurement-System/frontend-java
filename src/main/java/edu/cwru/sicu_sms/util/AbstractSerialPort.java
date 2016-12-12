@@ -25,8 +25,8 @@ import java.util.Properties;
  */
 abstract class AbstractSerialPort implements SerialPortEventListener {
     
-    final SerialPort serialPort;
-    final Properties properties;
+    SerialPort serialPort;
+    Properties properties;
     
     /**
      * Constructs the underlying serial port with properties from the specified file.
