@@ -42,7 +42,6 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        serialPort = new SerialPort(getPortName());
     }
     
     ///////////////////////////  GETTERS  ///////////////////////////////
@@ -127,13 +126,33 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     
     public boolean openPort() {
         boolean success = false;
+        final SerialPort newPort = new SerialPort(getPortName());
         try {
-            serialPort.openPort();
-            serialPort.setParams(getBaudRate(), getDataBits(), getStopBits(), getParity());
-            serialPort.setEventsMask(getMask());
-            serialPort.addEventListener(this);
+            newPort.openPort();
+            newPort.setParams(getBaudRate(), getDataBits(), getStopBits(), getParity());
+            newPort.setEventsMask(getMask());
+            newPort.addEventListener(this);
+            
+            serialPort = newPort;
             success = true;
-        } catch (SerialPortException e) {
+        }
+        catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
+    
+    public boolean closePort() {
+        boolean success = false;
+        try {
+            serialPort.removeEventListener();
+            if (serialPort.isOpened())
+                serialPort.closePort();
+            
+            serialPort = null;
+            success = true;
+        }
+        catch (SerialPortException e) {
             e.printStackTrace();
         }
         return success;
