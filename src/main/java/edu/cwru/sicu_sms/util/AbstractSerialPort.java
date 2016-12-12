@@ -124,6 +124,11 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     
     ////////////////////////  OTHER METHODS  ////////////////////////////
     
+    /**
+     * Opens the underlying serial port.
+     *
+     * @return <code>true</code> if the serial port was successfully opened; <code>false</code> otherwise
+     */
     public boolean openPort() {
         boolean success = false;
         final SerialPort newPort = new SerialPort(getPortName());
@@ -142,6 +147,11 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
         return success;
     }
     
+    /**
+     * Closes the underlying serial port.
+     *
+     * @return <code>true</code> if the serial port was successfully closed; <code>false</code> otherwise
+     */
     public boolean closePort() {
         boolean success = false;
         try {
