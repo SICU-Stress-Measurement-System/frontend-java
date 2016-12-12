@@ -26,6 +26,11 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     
     SerialPort serialPort;
     
+    /**
+     * Instantiates the underlying serial port with the port name associated with the given property key.
+     *
+     * @param key the string key used to load the port name from the 'port' properties file
+     */
     AbstractSerialPort(String key) {
         Properties properties = new Properties();
         FileInputStream inStream = null;
