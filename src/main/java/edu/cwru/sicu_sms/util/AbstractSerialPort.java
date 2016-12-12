@@ -129,13 +129,8 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
         boolean success = false;
         try {
             serialPort.openPort();
-            serialPort.setParams(
-                    getBaudRate(),
-                    getDataBits(),
-                    getStopBits(),
-                    getParity());
-            serialPort.setEventsMask(
-                    getMask());
+            serialPort.setParams(getBaudRate(), getDataBits(), getStopBits(), getParity());
+            serialPort.setEventsMask(getMask());
             serialPort.addEventListener(this);
             success = true;
         } catch (SerialPortException e) {
