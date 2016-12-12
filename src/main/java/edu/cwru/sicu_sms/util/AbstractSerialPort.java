@@ -18,10 +18,8 @@ import jssc.SerialPortEventListener;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-abstract class AbstractSerialPort extends SerialPort implements SerialPortEventListener {
+abstract class AbstractSerialPort implements SerialPortEventListener {
     
-    public AbstractSerialPort(String portName) {
-        super(portName);
-    }
+    private SerialPort serialPort;
     
 }
