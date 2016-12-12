@@ -8,6 +8,9 @@
 
 package edu.cwru.sicu_sms.util;
 
+import jssc.SerialPort;
+import jssc.SerialPortEventListener;
+
 /**
  * This class is an abstraction of a serial port comprising all the necessary parameters and core functionality needed for the client application.
  *
@@ -15,8 +18,10 @@ package edu.cwru.sicu_sms.util;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public abstract class AbstractSerialPort {
+public abstract class AbstractSerialPort extends SerialPort implements SerialPortEventListener {
     
-     
+    public AbstractSerialPort(String portName) {
+        super(portName);
+    }
     
 }
