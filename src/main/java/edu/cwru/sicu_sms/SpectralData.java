@@ -2,7 +2,8 @@ package edu.cwru.sicu_sms;
 
 import java.util.*;
 import javafx.*;
-import org.jtransforms.fft.DoubleFFT_1D;
+import javafx.collections.ObservableList;
+//import org.jtransforms.fft.DoubleFFT_1D;
 
 /**
  * This is an abstract data class with methods common to the two types of spectral data;
@@ -12,9 +13,9 @@ import org.jtransforms.fft.DoubleFFT_1D;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public abstract class SpectralData extends StressIndexData {
+public abstract class SpectralData<T> extends StressIndexData {
 
-    private DoubleFFT_1D fft;
+//    private DoubleFFT_1D fft;
 
     /*The list of data points currently being analyzed to compute the stress index.
     5 minutes of data are stored at a time*/
@@ -31,12 +32,12 @@ public abstract class SpectralData extends StressIndexData {
     public SpectralData(ObservableList<T> temporalData, int Fs)
     {
         super(temporalData, Fs);
-        fft = new DoubleFFT_1D((long) MAXSIZE);
+//        fft = new DoubleFFT_1D((long) MAXSIZE);
         data = new double[MAXSIZE*2];
         transform();
     }
 
-    public void addDataPoint(/*type to use*/ newPoint)
+    public void addDataPoint(T/*type to use*/ newPoint)
     {
         dataList.add(newPoint);
         if (dataList.size() > MAXSIZE)
@@ -56,7 +57,7 @@ public abstract class SpectralData extends StressIndexData {
         int i;
         for(i = 0; i < dataList.size(); i++)
         {
-            data[i] = dataList.get(i);
+//            data[i] = dataList.get(i);
         }
         for(; i < data.length; i++)
         {
@@ -67,7 +68,7 @@ public abstract class SpectralData extends StressIndexData {
     public void transform()
     {
 
-        fft.realForwardFull(data);
+//        fft.realForwardFull(data);
     }
 
     protected double[] sumMagnitude(int n)

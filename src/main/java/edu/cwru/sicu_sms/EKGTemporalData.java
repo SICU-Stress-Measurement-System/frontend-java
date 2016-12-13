@@ -8,6 +8,8 @@
 
 package edu.cwru.sicu_sms;
 
+import javafx.collections.ObservableList;
+
 import java.util.*;
 
 /**
@@ -17,7 +19,7 @@ import java.util.*;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class EKGTemporalData extends StressIndexData {
+public abstract class EKGTemporalData<T> extends StressIndexData {
 
     public static final int THRESHOLD = 800;
 
@@ -49,11 +51,11 @@ public class EKGTemporalData extends StressIndexData {
     /** TODO */
     public void setArray()
     {
-        data = dataList.toArray();
+//        data = dataList.toArray();
     }
     
     /** TODO */
-    public void addDataPoint(/* TODO: type to use */ newPoint)
+    public void addDataPoint(T/* TODO: type to use */ newPoint)
     {
         dataList.add(newPoint);
         if (dataList.size() > MAXSIZE)
@@ -73,7 +75,7 @@ public class EKGTemporalData extends StressIndexData {
         ArrayList<Double> RtagInts = new ArrayList<>(MAXSIZE/2);
         for (int i = 1; i < MAXSIZE; i++)
         {
-            time = (1/Fs)*i;
+            double time = (1/Fs)*i;
             if (data[i-1] < THRESHOLD && data[i] >= THRESHOLD)
                 RtagInts.add(time);
         }
@@ -94,7 +96,7 @@ public class EKGTemporalData extends StressIndexData {
         double intervalSum = 0;
         for (int i = 0; i < RRintervals.size(); i++)
         {
-            intervalSum += RRintervals.get(i);
+            intervalSum += (double) RRintervals.get(i);
         }
         return intervalSum/RRintervals.size();
     }

@@ -1,5 +1,6 @@
 package edu.cwru.sicu_sms;
-import org.jtransforms.fft.DoubleFFT_1D;
+
+//import org.jtransforms.fft.DoubleFFT_1D;
 
 import java.util.*;
 
@@ -10,15 +11,15 @@ import java.util.*;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public class EEGSpectralData extends SpectralData {
+public abstract class EEGSpectralData extends SpectralData {
 
     private static final double[] HIGHBETARANGE = {18, 30};
     private static final double[] TOTALRANGE = {2, 45};
-    private DoubleFFT_1D fft;
+//    private DoubleFFT_1D fft;
 
     /*The list of data points currently being analyzed to compute the stress index.
     5 minutes of data are stored at a time*/
-    private ObservableList<T> dataList;
+//    private ObservableList<T> dataList;
     private double[] data;
 
     //The sampling frequency
@@ -28,11 +29,11 @@ public class EEGSpectralData extends SpectralData {
     private double stressIndex;
 
 
-    public EEGSpectralData(/*List of dataSets*/, int Fs)
+    public EEGSpectralData(/*List of dataSets,*/ int Fs)
     {
         /*TODO: average data sets into one*/
 
-        super(/*average*/, Fs);
+        super(null/*average*/, Fs);
     }
 
 
