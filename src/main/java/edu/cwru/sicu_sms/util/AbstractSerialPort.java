@@ -148,6 +148,23 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     }
     
     /**
+     * Reads ____ data in the input buffer of the underlying serial port.
+     * TODO: Should know how many bytes to read at a time!
+     *
+     * @return a byte array of data
+     */
+    public byte[] readData() {
+        byte[] data = null;
+        try {
+            data = serialPort.readBytes();
+        }
+        catch(SerialPortException e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+    
+    /**
      * Closes the underlying serial port.
      *
      * @return <code>true</code> if the serial port was successfully closed; <code>false</code> otherwise
