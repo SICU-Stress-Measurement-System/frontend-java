@@ -17,6 +17,6 @@ package edu.cwru.sicu_sms;
  */
 public class Constants {
     
-    private static final int TIME_WINDOW = 10;
+    public static final int TIME_WINDOW = 10;
     
 }
