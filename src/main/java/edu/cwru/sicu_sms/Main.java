@@ -27,7 +27,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(
-                getClass().getResource("sicu_sms.fxml")
+                getClass().getResource("scene/sicu_sms.fxml")
         );
         primaryStage.getIcons().add(new Image(
                 "http://s3.amazonaws.com/libapps/customers/558/images/CWRU_Logo.jpg"));
