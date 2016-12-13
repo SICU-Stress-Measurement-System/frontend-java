@@ -1,7 +1,6 @@
 package edu.cwru.sicu_sms;
 
 import java.util.*;
-import javafx.*;
 import javafx.collections.ObservableList;
 //import org.jtransforms.fft.DoubleFFT_1D;
 
