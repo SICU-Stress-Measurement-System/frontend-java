@@ -6,10 +6,14 @@
 **                          2016 Fall Semester                          **
 \*                                                                      */
 
-package edu.cwru.sicu_sms;
+package edu.cwru.sicu_sms.plot;
 
+import edu.cwru.sicu_sms.Constants;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 
 /**
  * This class is delegated to managing the "Channel Data" plot in the front-end program.
@@ -20,6 +24,14 @@ import javafx.scene.chart.LineChart;
  */
 class TemporalPlot {
     
-    @FXML LineChart temporalChart;
+    @FXML private LineChart temporalChart;
+    private final NumberAxis xAxis, yAxis;
+    private final ObservableList<LineChart.Series> seriesList;
+    
+    TemporalPlot() {
+        xAxis = new NumberAxis("Time (sec)", -Constants.TIME_WINDOW, 0, 1);
+        yAxis = new NumberAxis();
+        seriesList = FXCollections.emptyObservableList();
+    }
     
 }
