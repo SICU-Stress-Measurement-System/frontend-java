@@ -9,6 +9,7 @@
 package edu.cwru.sicu_sms.util;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -24,11 +25,11 @@ public class PropertyOperator {
     /**
      * Loads the property list from the specified file.
      *
-     * @param filename the system-dependent name of the <code>.properties</code> file to be loaded
+     * @param filename the system-dependent name of the <tt>.properties</tt> file to be loaded
      *
-     * @return a reference to the {@link Properties} object instantiated in this process, populated with key-value pairs loaded from the file, or left unpopulated if the file was not found
+     * @return a reference to the {@code Properties} object instantiated in this process, populated with key-value pairs loaded from the file, or left unpopulated if the file was not found
      *
-     * @implNote This method is defined with the <code>synchronized</code> modifier, making it thread-safe.
+     * @implNote This method is defined with the {@code synchronized} modifier, making it thread-safe.
      */
     public static synchronized Properties loadProperties(String filename) {
         Properties properties = new Properties();
@@ -36,10 +37,37 @@ public class PropertyOperator {
             FileInputStream inStream = new FileInputStream(filename);
             properties.load(inStream);
             inStream.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         return properties;
+    }
+    
+    /**
+     * Saves the property list in the specified file, with the given description.
+     *
+     * @param properties the property list
+     * @param filename   the system-dependent name of the <code>.properties</code> file to be loaded
+     * @param comment    a description of the property list to be inserted as a header comment
+     *
+     * @return {@code true} if this procedure was successful; {@code false} otherwise
+     *
+     * @implNote This method is defined with the {@code synchronized} modifier, making it thread-safe.
+     */
+    public static synchronized boolean saveProperties(Properties properties, String filename, String comment) {
+        boolean success = false;
+        try {
+            FileOutputStream outStream = new FileOutputStream(filename);
+            properties.store(outStream, comment);
+            outStream.close();
+            
+            success = true;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return success;
     }
     
 }
