@@ -25,8 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PropertyOperatorTest {
     
-    private static final String LOAD_FILE = "util/TestProperties.properties";
-    private static final String SAVE_FILE = "util/TestProperties.properties";
+    private static final String LOAD_FILE = "src/test/resources/util/TestProperties.properties";
+    private static final String SAVE_FILE = "src/test/resources/util/TestProperties.properties";
     
     private Properties propertiesToTest;
     
@@ -59,7 +59,7 @@ class PropertyOperatorTest {
         propertiesToSave.setProperty("new_key", "new_value");
         
         boolean success = PropertyOperator.saveProperties(
-                propertiesToSave, SAVE_FILE, "New Description!");
+                propertiesToSave, SAVE_FILE, "Test Properties - UPDATED");
         
         assert success;
     }
