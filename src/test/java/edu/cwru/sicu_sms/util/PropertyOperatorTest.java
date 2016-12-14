@@ -25,8 +25,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PropertyOperatorTest {
     
-    private static final String LOAD_FILE = "src/test/resources/util/TestProperties.properties";
-    private static final String SAVE_FILE = "src/test/resources/util/TestProperties.properties";
+    private static final String PATH_ROOT = "src/test/resources/util/";
+    private static final String LOAD_FILE = PATH_ROOT + "TestProperties.properties";
+    private static final String SAVE_FILE = PATH_ROOT + "TestProperties.properties";
     
     private Properties propertiesToTest;
     
@@ -42,15 +43,24 @@ class PropertyOperatorTest {
     void tearDown() {
         propertiesToTest.clear();
         propertiesToTest = null;
+        // TODO: restore original file state
     }
     
     @Test
     void loadProperties() {
-        Properties propertiesToLoad = PropertyOperator.loadProperties(LOAD_FILE);
+        Properties loadedProperties = PropertyOperator.loadProperties(LOAD_FILE);
         
-        // TODO: needs to be implemented
+        assertEquals(propertiesToTest.size(), loadedProperties.size());
         
-        assert false;
+        loadedProperties.keySet().forEach(key -> {
+            Object value = loadedProperties.get(key);
+            System.out.println(key + "=" + value);
+            
+            assert propertiesToTest.containsKey(key);
+            Object expectedValue = propertiesToTest.get(key);
+            
+            assertEquals(expectedValue, value);
+        });
     }
     
     @Test
