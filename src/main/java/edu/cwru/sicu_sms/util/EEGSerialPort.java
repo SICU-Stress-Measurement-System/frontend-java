@@ -20,7 +20,7 @@ import jssc.SerialPortEvent;
 public final class EEGSerialPort extends AbstractSerialPort {
     
     public EEGSerialPort() {
-        super(EEGSerialPort.class.getName());
+        super(EEGSerialPort.class.getSimpleName());
     }
     
     @Override
