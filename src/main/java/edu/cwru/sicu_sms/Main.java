@@ -10,7 +10,6 @@ package edu.cwru.sicu_sms;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -26,13 +25,13 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(
-                getClass().getResource("scene/sicu_sms.fxml")
-        );
-        primaryStage.getIcons().add(new Image(
-                "http://s3.amazonaws.com/libapps/customers/558/images/CWRU_Logo.jpg"));
+        primaryStage.setScene(new Scene(
+                FXMLLoader.load(getClass().getResource("scene/sicu_sms.fxml"))));
+    
         primaryStage.setTitle("SICU Stress Measurement System");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.getIcons()
+                .add(new Image("http://s3.amazonaws.com/libapps/customers/558/images/CWRU_Logo.jpg"));
+        
         primaryStage.setMaximized(true);
         primaryStage.show();
     }
