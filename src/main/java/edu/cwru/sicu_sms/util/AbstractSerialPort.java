@@ -27,12 +27,13 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     Properties properties;
     
     /**
-     * Constructs the underlying serial port with properties from the specified file.
+     * Constructs the underlying serial port with the referenced properties.
      *
-     * @param filename the relative path to the <code>.properties</code> file
+     * @param name the name of the serial port class-properties pair
      */
-    AbstractSerialPort(String filename) {
-        properties = PropertyOperator.loadProperties(filename);
+    AbstractSerialPort(String name) {
+        properties = PropertyOperator.loadProperties(
+                "src/main/resources/util/" + name + ".properties");
     }
     
     ///////////////////////////  GETTERS  ///////////////////////////////

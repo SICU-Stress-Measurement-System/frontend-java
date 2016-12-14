@@ -20,7 +20,7 @@ import jssc.SerialPortEvent;
 public final class EKGSerialPort extends AbstractSerialPort {
     
     public EKGSerialPort() {
-        super("util/EKGSerialPort.properties");
+        super(EKGSerialPort.class.getName());
     }
     
     @Override
