@@ -17,6 +17,7 @@ package edu.cwru.sicu_sms;
  */
 public class Constants {
     
+    @Deprecated
     public static final int TIME_WINDOW = 10;
     
 }
