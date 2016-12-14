@@ -34,14 +34,7 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
      * @param filename the relative path to the <code>.properties</code> file
      */
     AbstractSerialPort(String filename) {
-        properties = new Properties();
-        try {
-            FileInputStream inStream = new FileInputStream(filename);
-            properties.load(inStream);
-            inStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        properties = PropertyOperator.loadProperties(filename);
     }
     
     ///////////////////////////  GETTERS  ///////////////////////////////
