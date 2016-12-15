@@ -22,7 +22,7 @@ import java.util.Properties;
  */
 public class PropertyOperator {
     
-    private static final Class ME = PropertyOperator.class;
+    private static final ClassLoader LOADER = PropertyOperator.class.getClassLoader();
     
     private static InputStream inStream;
     private static FileOutputStream outStream;
@@ -40,7 +40,7 @@ public class PropertyOperator {
     public static synchronized Properties loadProperties(String filename) {
         properties = new Properties();
         try {
-            inStream = ME.getResourceAsStream(filename);
+            inStream = LOADER.getResourceAsStream(filename);
             properties.load(inStream);
             inStream.close();
         }
