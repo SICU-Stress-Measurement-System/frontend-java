@@ -17,7 +17,7 @@ import jssc.SerialPortEvent;
  * @author Ted Frohlich <ttf10@case.edu>
  * @author Abby Walker <amw138@case.edu>
  */
-public final class EEGSerialPort extends AbstractSerialPort {
+public class EEGSerialPort extends AbstractSerialPort {
     
     public EEGSerialPort() {
         super(EEGSerialPort.class.getSimpleName());
