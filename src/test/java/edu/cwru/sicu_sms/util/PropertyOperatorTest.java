@@ -25,9 +25,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PropertyOperatorTest {
     
-    private static final String PATH_ROOT = "src/test/resources/util/";
-    private static final String LOAD_FILE = PATH_ROOT + "TestProperties.properties";
-    private static final String SAVE_FILE = PATH_ROOT + "TestProperties.properties";
+    private static final String TEST_RESOURCES_ROOT = "src/test/resources/";
+    
+    private String filename = "util/TestProperties.properties";
     
     private Properties propertiesToTest;
     
@@ -48,7 +48,7 @@ class PropertyOperatorTest {
     
     @Test
     void loadProperties() {
-        Properties loadedProperties = PropertyOperator.loadProperties(LOAD_FILE);
+        Properties loadedProperties = PropertyOperator.loadProperties(filename);
         
         assertEquals(propertiesToTest.size(), loadedProperties.size());
         
@@ -69,7 +69,9 @@ class PropertyOperatorTest {
         propertiesToSave.setProperty("new_key", "new_value");
         
         boolean success = PropertyOperator.saveProperties(
-                propertiesToSave, SAVE_FILE, "Test Properties - UPDATED");
+                propertiesToSave,
+                TEST_RESOURCES_ROOT + filename,
+                "Test Properties - UPDATED");
         
         assert success;
     }
