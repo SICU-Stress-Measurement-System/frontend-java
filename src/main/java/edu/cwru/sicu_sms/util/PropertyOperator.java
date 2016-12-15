@@ -8,9 +8,9 @@
 
 package edu.cwru.sicu_sms.util;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -22,6 +22,12 @@ import java.util.Properties;
  */
 public class PropertyOperator {
     
+    private static final Class ME = PropertyOperator.class;
+    
+    private static InputStream inStream;
+    private static FileOutputStream outStream;
+    private static Properties properties;
+    
     /**
      * Loads the property list from the specified file.
      *
@@ -32,9 +38,9 @@ public class PropertyOperator {
      * @implNote This method is defined with the {@code synchronized} modifier, making it thread-safe.
      */
     public static synchronized Properties loadProperties(String filename) {
-        Properties properties = new Properties();
+        properties = new Properties();
         try {
-            FileInputStream inStream = new FileInputStream(filename);
+            inStream = ME.getResourceAsStream(filename);
             properties.load(inStream);
             inStream.close();
         }
@@ -58,7 +64,7 @@ public class PropertyOperator {
     public static synchronized boolean saveProperties(Properties properties, String filename, String comment) {
         boolean success = false;
         try {
-            FileOutputStream outStream = new FileOutputStream(filename);
+            outStream = new FileOutputStream(filename);
             properties.store(outStream, comment);
             outStream.close();
             
