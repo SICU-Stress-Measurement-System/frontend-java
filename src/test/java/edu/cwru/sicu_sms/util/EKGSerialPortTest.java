@@ -13,8 +13,6 @@ import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * Test class for {@link EKGSerialPort}.
  *
@@ -46,11 +44,11 @@ class EKGSerialPortTest {
     
     @Test
     void testInTerminal() {
-        byte[] data;
+        int[] data;
         
         long startTime = System.nanoTime();
         do {
-            data = serialPort.readData();
+            data = serialPort.readIntArray();
             
             if (data != null && data.length > 0) {
                 System.out.println(Arrays.toString(data));
