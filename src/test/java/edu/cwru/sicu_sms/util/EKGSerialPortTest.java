@@ -8,7 +8,6 @@
 
 package edu.cwru.sicu_sms.util;
 
-import jssc.SerialPortEvent;
 import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
@@ -28,12 +27,7 @@ class EKGSerialPortTest {
     
     @BeforeEach
     void setUp() {
-        serialPort = new EKGSerialPort() {
-            @Override
-            public void serialEvent(SerialPortEvent serialPortEvent) {
-                
-            }
-        };
+        serialPort = new EKGSerialPort();
         serialPort.openPort();
     }
     
@@ -44,16 +38,19 @@ class EKGSerialPortTest {
     
     @Test
     void testInTerminal() {
-        int[] data;
-        
         long startTime = System.nanoTime();
-        do {
-            data = serialPort.readIntArray();
-            
-            if (data != null && data.length > 0) {
-                System.out.println(Arrays.toString(data));
-            }
-        } while (System.nanoTime() - startTime < READ_DURATION);
+        
+        serialPort.setEventListener(serialPortEvent -> {
+            int[] data = serialPort.readIntArray();
+            System.out.println(Arrays.toString(data));
+        });
+        
+        while (System.nanoTime() - startTime < READ_DURATION);
+    }
+    
+    @Test
+    void testInFXChart() {
+        
     }
     
 }
