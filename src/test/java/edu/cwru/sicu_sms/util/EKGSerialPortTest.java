@@ -21,7 +21,7 @@ import java.util.Arrays;
  */
 class EKGSerialPortTest {
     
-    private static long READ_DURATION = (long) 3e9;  // 3 seconds, expressed in nanoseconds
+    private static long READ_DURATION = (long) 5e9;  // 5 seconds, expressed in nanoseconds
     
     private EKGSerialPort serialPort;
     
