@@ -37,6 +37,10 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     
     ///////////////////////////  GETTERS  ///////////////////////////////
     
+    public SerialPort get() {
+        return serialPort;
+    }
+    
     private String getProperty(String key) {
         return properties.getProperty(key);
     }
