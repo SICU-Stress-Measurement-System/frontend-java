@@ -144,15 +144,30 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
      *
      * @return a byte array of data
      */
-    public byte[] readData() {
-        byte[] data = null;
+    public byte[] readBytes() {
+        byte[] bytes = null;
         try {
-            data = serialPort.readBytes();
+            bytes = serialPort.readBytes();
         }
         catch(SerialPortException e) {
             e.printStackTrace();
         }
-        return data;
+        return bytes;
+    }
+    
+    /**
+     * TODO
+     * @return
+     */
+    public int[] readIntArray() {
+        int[] intArray = null;
+        try {
+            intArray = serialPort.readIntArray();
+        }
+        catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+        return intArray;
     }
     
     /**
