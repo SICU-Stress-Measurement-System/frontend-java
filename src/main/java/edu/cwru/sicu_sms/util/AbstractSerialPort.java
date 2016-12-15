@@ -139,6 +139,25 @@ abstract class AbstractSerialPort implements SerialPortEventListener {
     }
     
     /**
+     * Replaces the current event listener of the underlying serial port with the one provided.
+     *
+     * @param listener the event listener to add
+     * @return {@code true} if the event listener was successfully reconfigured; {@code false} otherwise
+     */
+    public boolean setEventListener(SerialPortEventListener listener) {
+        boolean success = false;
+        try {
+            serialPort.removeEventListener();
+            serialPort.addEventListener(listener);
+            success = true;
+        }
+        catch (SerialPortException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
+    
+    /**
      * Reads ____ data in the input buffer of the underlying serial port.
      * TODO: Should know how many bytes to read at a time!
      *
